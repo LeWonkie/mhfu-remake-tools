@@ -1,16 +1,16 @@
-# Outils du projet MHFU
+# MHFU Project Tools
 
-- [Atelier PSPRecomp](outils/atelier-mhfu) — interface, diagnostic, scénarios et tests.
-- [Sondes de développement](work) — inspection, validation et benchmarks.
-- [Runtime natif](native-runtime) — diagnostic, vérifications, comparaison d'images et synthèse.
-- [Analyse](analyse) — ELF/MIPS, NID, overlays et banc C/Python.
-- [PPSSPP](remake-ppsspp) — scripts de lancement et de configuration.
-- [Migration](MHFU_REMAKE_CLAUDE_MIGRATION) — validation des fichiers locaux et extraction audio.
-- [Test OpenGL](https://github.com/LeWonkie/opengl-lighting-test) — éclairage sur un triangle animé, dans son dépôt dédié.
+- [PSPRecomp Workshop](outils/atelier-mhfu) — graphical interface, diagnostics, scenarios, and tests.
+- [Development probes](work) — inspection, validation, and benchmarks.
+- [Native runtime tools](native-runtime) — diagnostics, validation, image comparison, and reports.
+- [Analysis](analyse) — ELF/MIPS, NIDs, overlays, and a C/Python test harness.
+- [PPSSPP](remake-ppsspp) — launch and configuration scripts.
+- [Migration tools](MHFU_REMAKE_CLAUDE_MIGRATION) — local file validation and audio extraction.
+- [OpenGL test](https://github.com/LeWonkie/opengl-lighting-test) — animated-triangle lighting verification in a dedicated repository.
 
-Suivre le [README de l'Atelier](outils/atelier-mhfu/README.md) pour l'arborescence locale. Certains outils attendent les builds PSPRecomp ou du runtime natif, leurs dépendances, une copie locale du jeu et des registres de travail générés. Le banc C utilise les vecteurs de référence de l'archive d'analyse locale.
+See the [Workshop README](outils/atelier-mhfu/README.md) for the local directory layout. Some tools require PSPRecomp or native runtime builds, their dependencies, a local copy of the game, and generated registries. The C test harness uses reference vectors from the local analysis archive.
 
-Pour générer le catalogue et le registre d’objectifs à partir de ta copie locale, exécute ces commandes depuis la racine du projet.
+Run these commands from the project root to generate the quest catalog and objective registry from your local copy.
 
 ```powershell
 python outils/atelier-mhfu/quest_catalog.py --disc game-mhfu/disc.iso
