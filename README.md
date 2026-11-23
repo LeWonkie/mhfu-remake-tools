@@ -9,3 +9,10 @@
 - [Test OpenGL](https://github.com/LeWonkie/opengl-lighting-test) — éclairage sur un triangle animé, dans son dépôt dédié.
 
 Suivre le [README de l'Atelier](outils/atelier-mhfu/README.md) pour l'arborescence locale. Certains outils attendent les builds PSPRecomp ou du runtime natif, leurs dépendances, une copie locale du jeu et des registres de travail générés. Le banc C utilise les vecteurs de référence de l'archive d'analyse locale.
+
+Pour générer le catalogue et le registre d’objectifs à partir de ta copie locale, exécute ces commandes depuis la racine du projet.
+
+```powershell
+python outils/atelier-mhfu/quest_catalog.py --disc game-mhfu/disc.iso
+python outils/atelier-mhfu/derive_objectives.py --disc game-mhfu/disc.iso
+```
