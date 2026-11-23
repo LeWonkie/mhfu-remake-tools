@@ -1,0 +1,35 @@
+{
+  "name": "retro-farm",
+  "seconds": 180,
+  "assisted": false,
+  "description": "From the saved introduction: NPC6 dialogue opens Pokke Farm (stage 46), mining point 7 ('Mine Ore') gives random ore until exhausted, point 0 returns to the village. No money or items are supplied; interact places the hunter on each point (placement shortcut, not walking).",
+  "start": {
+    "seed": "20261020-153034-ceda7b",
+    "from_run": "20261027-181037-641ba7"
+  },
+  "steps": [
+    {"op": "talk", "type": 6},
+    {"op": "advance", "until": "closed", "timeout": 40},
+    {"op": "interact", "index": 5, "button": "x"},
+    {"op": "wait", "state": {"stage": 46}, "timeout": 15},
+    {"op": "wait", "seconds": 1},
+    {"op": "snapshot", "name": "ferme"},
+    {"op": "interact", "index": 7, "button": "x"},
+    {"op": "wait", "seconds": 5},
+    {"op": "button", "button": "x"},
+    {"op": "wait", "seconds": 5},
+    {"op": "button", "button": "x"},
+    {"op": "wait", "seconds": 5},
+    {"op": "button", "button": "x"},
+    {"op": "wait", "seconds": 5},
+    {"op": "capture", "name": "minage"},
+    {"op": "snapshot", "name": "apres-minage"},
+    {"op": "diff", "before": "ferme", "after": "apres-minage"},
+    {"op": "assert", "field": "pouch", "key": "*", "at_least": 1},
+    {"op": "assert", "field": "farm_changed", "equals": true},
+    {"op": "assert", "field": "money_delta", "equals": 0},
+    {"op": "interact", "index": 0, "button": "x"},
+    {"op": "wait", "state": {"stage": 139}, "timeout": 15},
+    {"op": "capture", "name": "retour-village"}
+  ]
+}

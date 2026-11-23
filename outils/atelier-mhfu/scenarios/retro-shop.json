@@ -1,0 +1,149 @@
+{
+  "name": "retro-shop",
+  "seconds": 120,
+  "assisted": true,
+  "steps": [
+    {
+      "op": "command",
+      "command": "money 10000",
+      "expect": "zenny"
+    },
+    {
+      "op": "snapshot",
+      "name": "before"
+    },
+    {
+      "op": "talk",
+      "type": 1
+    },
+    {
+      "op": "advance",
+      "until": "menu",
+      "timeout": 30
+    },
+    {
+      "op": "capture",
+      "name": "shop-menu"
+    },
+    {
+      "op": "select",
+      "text": "Buy"
+    },
+    {
+      "op": "capture",
+      "name": "buy-list"
+    },
+    {
+      "op": "button",
+      "button": "b"
+    },
+    {
+      "op": "capture",
+      "name": "buy-confirm"
+    },
+    {
+      "op": "button",
+      "button": "b"
+    },
+    {
+      "op": "button",
+      "button": "b"
+    },
+    {
+      "op": "capture",
+      "name": "buy-result"
+    },
+    {
+      "op": "snapshot",
+      "name": "bought"
+    },
+    {
+      "op": "diff",
+      "before": "before",
+      "after": "bought",
+      "name": "purchase"
+    },
+    {
+      "op": "assert",
+      "diff": "purchase",
+      "field": "money_delta",
+      "equals": -20
+    },
+    {
+      "op": "assert",
+      "diff": "purchase",
+      "field": "pouch",
+      "key": "163",
+      "equals": 1
+    },
+    {
+      "op": "back"
+    },
+    {
+      "op": "talk",
+      "type": 1
+    },
+    {
+      "op": "advance",
+      "until": "menu"
+    },
+    {
+      "op": "select",
+      "text": "Sell"
+    },
+    {
+      "op": "capture",
+      "name": "sell-list"
+    },
+    {
+      "op": "button",
+      "button": "b"
+    },
+    {
+      "op": "capture",
+      "name": "sell-confirm"
+    },
+    {
+      "op": "button",
+      "button": "b"
+    },
+    {
+      "op": "button",
+      "button": "b"
+    },
+    {
+      "op": "capture",
+      "name": "sell-result"
+    },
+    {
+      "op": "snapshot",
+      "name": "sold"
+    },
+    {
+      "op": "diff",
+      "before": "bought",
+      "after": "sold",
+      "name": "sale"
+    },
+    {
+      "op": "assert",
+      "diff": "sale",
+      "field": "money_delta",
+      "equals": 2
+    },
+    {
+      "op": "assert",
+      "diff": "sale",
+      "field": "pouch",
+      "key": "163",
+      "equals": -1
+    },
+    {
+      "op": "back"
+    },
+    {
+      "op": "capture",
+      "name": "village-return"
+    }
+  ]
+}

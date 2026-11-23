@@ -1,0 +1,25 @@
+{
+  "name":"retro-save", "seconds":120, "assisted":true,
+  "description":"Save 12345 zenny through the game's bed, reload the changed private save, verify the value.",
+  "steps":[
+    {"op":"command","command":"money 12345","expect":"zenny"},
+    {"op":"interact","index":3,"button":"x"},
+    {"op":"wait","state":{"stage":66}},
+    {"op":"interact","index":2,"button":"x"},
+    {"op":"capture","name":"save-confirm"},
+    {"op":"button","button":"b"},
+    {"op":"wait","ui":{"contains_text":"Exit game?"},"timeout":20},
+    {"op":"button","button":"b"},
+    {"op":"wait","ui":{"scene":0},"timeout":10},
+    {"op":"capture","name":"save-finished"},
+    {"op":"snapshot","name":"saved"},
+    {"op":"reload","require_save_changed":true},
+    {"op":"snapshot","name":"reloaded"},
+    {"op":"assert_snapshot","snapshot":"reloaded","field":"money","equals":12345},
+    {"op":"diff","before":"saved","after":"reloaded"},
+    {"op":"assert","field":"money_delta","equals":0},
+    {"op":"assert","field":"equipment_box","equals":{}},
+    {"op":"assert","field":"item_box","equals":{}},
+    {"op":"capture","name":"reloaded-money"}
+  ]
+}

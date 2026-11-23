@@ -1,0 +1,24 @@
+{
+  "name":"retro-memory", "seconds":100, "assisted":true,
+  "description":"Live symbols, vtable enumeration, snapshots, annotated dumps, bounded trace and optional write watch.",
+  "steps":[
+    {"op":"symbols","scope":"lobby_task"},
+    {"op":"command","command":"sym NpcManager","expect":"NpcManager"},
+    {"op":"command","command":"addr 0x09B1E708","expect":"NpcManager"},
+    {"op":"command","command":"objects 0x089B6100 0x240","expect":"candidates"},
+    {"op":"command","command":"trace 0x0884FA7C 3","expect":"trace remaining 3"},
+    {"op":"wait","seconds":0.3},
+    {"op":"command","command":"trace off","expect":"trace remaining 0"},
+    {"op":"snapshot","name":"before"},
+    {"op":"watch","snapshot":"before","field":"money_address","size":4},
+    {"op":"dump","name":"before","address":{"snapshot":"before","field":"money_address"},"size":"0x20"},
+    {"op":"command","command":"money 4321","expect":"zenny"},
+    {"op":"snapshot","name":"after"},
+    {"op":"dump","name":"after","address":{"snapshot":"before","field":"money_address"},"size":"0x20"},
+    {"op":"command","command":"watch off","expect":"watch updated"},
+    {"op":"memory_diff","before":"before","after":"after","scope":"lobby_task"},
+    {"op":"diff","before":"before","after":"after"},
+    {"op":"assert","field":"money_delta","equals":4321},
+    {"op":"capture","name":"memory-tools-village"}
+  ]
+}

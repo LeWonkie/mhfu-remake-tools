@@ -1,0 +1,8 @@
+{
+  "name": "boot-menu",
+  "label": "Démarrage et menus",
+  "description": "Essai court : rejoue les premières confirmations d'amorçage, capture puis ferme la fenêtre. La présence d'une sauvegarde et la vitesse de chargement peuvent changer l'écran atteint ; examine la capture. Ce scénario ne crée pas de personnage et ne prouve pas que le menu attendu est visible.",
+  "script": "90:pad b 12;180:pad b 12;300:pad start 12;360:shot boot-menu;420:quit",
+  "seconds": 45,
+  "requires_checkpoint": false
+}

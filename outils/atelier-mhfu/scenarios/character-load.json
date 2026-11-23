@@ -1,0 +1,8 @@
+{
+  "name": "character-load",
+  "label": "Chargement du personnage",
+  "description": "Rejoue la séquence de confirmations utilisée avec la sauvegarde locale après introduction. Nécessite une référence explicitement préparée avec un personnage ; les sauvegardes sont des fichiers de jeu, pas des états mémoire. La sélection du personnage et l'écran atteint restent à contrôler sur la capture.",
+  "script": "90:pad b 12;180:pad b 12;300:pad start 12;420:pad b 12;540:pad b 12;660:pad b 12;780:pad b 12;960:shot character-load;1100:quit",
+  "seconds": 60,
+  "requires_checkpoint": true
+}

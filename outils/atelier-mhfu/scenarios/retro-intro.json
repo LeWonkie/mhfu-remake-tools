@@ -1,0 +1,190 @@
+{
+  "name": "retro-intro",
+  "seconds": 160,
+  "assisted": true,
+  "description": "Normal introduction and in-game save on private copies; test placement only, no money/item grants or quest outcome forcing.",
+  "steps": [
+    {
+      "op": "snapshot",
+      "name": "initial"
+    },
+    {
+      "op": "talk",
+      "type": 0
+    },
+    {
+      "op": "advance",
+      "until": "closed",
+      "timeout": 40
+    },
+    {
+      "op": "interact",
+      "index": 2,
+      "button": "x"
+    },
+    {
+      "op": "wait",
+      "ui": {
+        "contains_text": "Beginner Train"
+      }
+    },
+    {
+      "op": "select",
+      "text": "Beginner Train"
+    },
+    {
+      "op": "select",
+      "text": "Hunter Info"
+    },
+    {
+      "op": "wait",
+      "ui": {
+        "contains_text": "1/9"
+      }
+    },
+    {
+      "op": "button",
+      "button": "dpright"
+    },
+    {
+      "op": "button",
+      "button": "dpright"
+    },
+    {
+      "op": "button",
+      "button": "dpright"
+    },
+    {
+      "op": "button",
+      "button": "dpright"
+    },
+    {
+      "op": "button",
+      "button": "dpright"
+    },
+    {
+      "op": "button",
+      "button": "dpright"
+    },
+    {
+      "op": "button",
+      "button": "dpright"
+    },
+    {
+      "op": "button",
+      "button": "dpright"
+    },
+    {
+      "op": "wait",
+      "ui": {
+        "contains_text": "9/9"
+      }
+    },
+    {
+      "op": "capture",
+      "name": "manual-complete"
+    },
+    {
+      "op": "button",
+      "button": "a"
+    },
+    {
+      "op": "select",
+      "text": "Finish Training"
+    },
+    {
+      "op": "select",
+      "text": "Exit School"
+    },
+    {
+      "op": "select",
+      "text": "Yes"
+    },
+    {
+      "op": "wait",
+      "state": {
+        "task": 10,
+        "stage": 139
+      }
+    },
+    {
+      "op": "talk",
+      "type": 0
+    },
+    {
+      "op": "advance",
+      "until": "closed",
+      "timeout": 40
+    },
+    {
+      "op": "snapshot",
+      "name": "prepared"
+    },
+    {
+      "op": "command",
+      "command": "state"
+    },
+    {
+      "op": "capture",
+      "name": "intro-completed"
+    },
+    {
+      "op": "interact",
+      "index": 3,
+      "button": "x"
+    },
+    {
+      "op": "wait",
+      "state": {
+        "stage": 66
+      }
+    },
+    {
+      "op": "interact",
+      "index": 2,
+      "button": "x"
+    },
+    {
+      "op": "button",
+      "button": "b"
+    },
+    {
+      "op": "wait",
+      "ui": {
+        "contains_text": "Exit game?"
+      }
+    },
+    {
+      "op": "button",
+      "button": "b"
+    },
+    {
+      "op": "wait",
+      "ui": {
+        "scene": 0
+      }
+    },
+    {
+      "op": "reload",
+      "require_save_changed": true
+    },
+    {
+      "op": "snapshot",
+      "name": "reloaded"
+    },
+    {
+      "op": "assert_snapshot",
+      "snapshot": "reloaded",
+      "field": "money",
+      "equals": 1500
+    },
+    {
+      "op": "command",
+      "command": "state"
+    },
+    {
+      "op": "capture",
+      "name": "prepared-reloaded"
+    }
+  ]
+}

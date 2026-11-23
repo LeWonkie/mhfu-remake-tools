@@ -1,0 +1,53 @@
+{
+  "name": "live-smoke-house",
+  "seconds": 60,
+  "assisted": false,
+  "description": "Smoke test of the live session: village to house and back, no inventory change.",
+  "start": {
+    "seed": "20261020-153034-ceda7b",
+    "from_run": "20261027-181037-641ba7"
+  },
+  "steps": [
+    {
+      "op": "snapshot",
+      "name": "avant"
+    },
+    {
+      "op": "area"
+    },
+    {
+      "op": "interact",
+      "index": 3
+    },
+    {
+      "op": "wait",
+      "state": {
+        "stage": 66
+      },
+      "timeout": 20
+    },
+    {
+      "op": "back"
+    },
+    {
+      "op": "snapshot",
+      "name": "apres"
+    },
+    {
+      "op": "diff",
+      "before": "avant",
+      "after": "apres"
+    },
+    {
+      "op": "assert",
+      "field": "money_delta",
+      "equals": 0
+    },
+    {
+      "op": "assert",
+      "field": "equipment_box",
+      "key": "5:3",
+      "equals": 0
+    }
+  ]
+}

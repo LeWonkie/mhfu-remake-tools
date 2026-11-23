@@ -1,0 +1,32 @@
+{
+  "name": "retro-forge",
+  "seconds": 120,
+  "assisted": true,
+  "description": "Craft one Buster Sword through the game's menus, with test money and materials.",
+  "steps": [
+    {"op": "command", "command": "money 10000", "expect": "zenny"},
+    {"op": "command", "command": "box 202 20"},
+    {"op": "command", "command": "box 203 20"},
+    {"op": "snapshot", "name": "before"},
+    {"op": "talk", "type": 2},
+    {"op": "advance", "until": "menu", "timeout": 40},
+    {"op": "capture", "name": "forge-menu"},
+    {"op": "select", "text": "Weaponcraft"},
+    {"op": "select", "text": "Create Weapon"},
+    {"op": "select", "text": "Great Swd/Long Swd"},
+    {"op": "capture", "name": "weapon-list"},
+    {"op": "button", "button": "b"},
+    {"op": "capture", "name": "craft-confirm"},
+    {"op": "button", "button": "b"},
+    {"op": "button", "button": "b"},
+    {"op": "capture", "name": "craft-result"},
+    {"op": "snapshot", "name": "after"},
+    {"op": "diff", "before": "before", "after": "after"},
+    {"op": "assert", "field": "money_delta", "equals": -500},
+    {"op": "assert", "field": "equipment_box", "key": "5:3", "equals": 1},
+    {"op": "assert", "field": "item_box", "key": "202", "equals": -3},
+    {"op": "back"},
+    {"op": "capture", "name": "village-return"},
+    {"op": "dump", "name": "memory-with-spaces", "address": "0x089C7508", "size": "0x20"}
+  ]
+}

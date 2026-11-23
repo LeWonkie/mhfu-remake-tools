@@ -1,0 +1,9 @@
+{
+  "name": "manual",
+  "label": "Session manuelle",
+  "description": "Démarre une copie isolée de la sauvegarde de référence et te laisse jouer. Depuis le village, « Partir en quête » lance directement la quête choisie (ex. 1001). Utilise les captures et le signalement de bug pendant une quête. Aucun menu ni résultat visuel n'est validé automatiquement.",
+  "script": "",
+  "seconds": 1800,
+  "requires_checkpoint": false,
+  "debug": true
+}

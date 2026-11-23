@@ -1,0 +1,9 @@
+{
+  "name": "village",
+  "label": "Trajet chambre vers village",
+  "description": "Reproduction exacte des 11 entrées exécutées dans final-smoke le 20 octobre 2026 avec la copie après introduction : chargement, marche vers la sortie, puis fermeture. L'atelier active temporairement la liaison Pad Guide pour l'avance rapide sur cette copie des réglages. Nécessite la même référence après introduction. Les minutages peuvent varier ; le village et le HUD doivent être vérifiés dans les captures. Ne lance aucune quête.",
+  "script": "1:pad guide 900;90:pad b 12;180:pad b 12;300:pad start 12;420:pad b 12;540:pad b 12;660:pad b 12;780:pad b 12;1000:axis lefty 1;1100:axis lefty 0;1450:quit",
+  "seconds": 60,
+  "requires_checkpoint": true,
+  "fast_boot": true
+}

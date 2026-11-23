@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+*.exe
+*.dll
+*.so
+*.iso
+*.bin
+*.BIN
+*.elf
+*.ELF
+*.prx
+*.log
+/game-mhfu/
+/atelier-psprecomp/
+/deps/
